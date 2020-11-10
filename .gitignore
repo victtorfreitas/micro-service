@@ -4,3 +4,11 @@ loja/.mvn/
 loja/mvnw
 
 loja/mvnw.cmd
+
+.idea/
+
+fornecedor/.mvn/
+
+fornecedor/mvnw
+
+fornecedor/mvnw.cmd
