@@ -17,6 +17,6 @@ public class CompraCtrl {
 
     @PostMapping
     public void realizarCompra(@Valid @RequestBody CompraRequest compra){
-        // Comprar
+        compraService.realizaCompra(compra);
     }
 }
