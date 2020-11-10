@@ -6,6 +6,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Objects;
+
 public class CompraService {
 
     private static final String URL_INFO_FORNECEDOR = "http://localhost:8081/info/";
@@ -16,6 +18,6 @@ public class CompraService {
                 HttpMethod.GET,
                 null,
                 InfoFornecedorResponse.class);
-
+        System.out.println(Objects.requireNonNull(resposta.getBody()).getEndereco());
     }
 }
