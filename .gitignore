@@ -12,3 +12,9 @@ fornecedor/.mvn/
 fornecedor/mvnw
 
 fornecedor/mvnw.cmd
+
+eureka/.mvn/
+
+eureka/mvnw
+
+*.cmd
