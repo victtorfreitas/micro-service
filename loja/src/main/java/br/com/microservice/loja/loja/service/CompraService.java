@@ -12,10 +12,15 @@ import java.util.Objects;
 @Service
 public class CompraService {
 
-    private static final String URL_INFO_FORNECEDOR = "http://localhost:8081/info/";
+    private static final String URL_INFO_FORNECEDOR = "http://fornecedor/info/";
+
+    private final RestTemplate client;
+
+    public CompraService(RestTemplate client) {
+        this.client = client;
+    }
 
     public void realizaCompra(CompraRequest compra) {
-        RestTemplate client = new RestTemplate();
         ResponseEntity<InfoFornecedorResponse> resposta = client.exchange(URL_INFO_FORNECEDOR + compra.getEndereco().getEstado(),
                 HttpMethod.GET,
                 null,
