@@ -3,8 +3,6 @@ server:
 
 
 spring:
-  application:
-    name: 'fornecedor'
   jpa:
     properties:
       hibernate:
