@@ -18,3 +18,7 @@ eureka/.mvn/
 eureka/mvnw
 
 *.cmd
+
+config-server/.mvn/
+
+config-server/mvnw
