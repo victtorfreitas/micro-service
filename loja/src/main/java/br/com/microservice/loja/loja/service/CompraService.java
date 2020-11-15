@@ -1,30 +1,23 @@
 package br.com.microservice.loja.loja.service;
 
+import br.com.microservice.loja.loja.config.FornecedorClient;
 import br.com.microservice.loja.loja.controller.requestDTO.CompraRequest;
 import br.com.microservice.loja.loja.service.responseDTO.InfoFornecedorResponse;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Objects;
 
 @Service
 public class CompraService {
 
-    private static final String URL_INFO_FORNECEDOR = "http://fornecedor/info/";
+    private final FornecedorClient fornecedorClient;
 
-    private final RestTemplate client;
-
-    public CompraService(RestTemplate client) {
-        this.client = client;
+    public CompraService(FornecedorClient fornecedorClient) {
+        this.fornecedorClient = fornecedorClient;
     }
 
     public void realizaCompra(CompraRequest compra) {
-        ResponseEntity<InfoFornecedorResponse> resposta = client.exchange(URL_INFO_FORNECEDOR + compra.getEndereco().getEstado(),
-                HttpMethod.GET,
-                null,
-                InfoFornecedorResponse.class);
-        System.out.println(Objects.requireNonNull(resposta.getBody()).getEndereco());
+        InfoFornecedorResponse infoFornecedor = fornecedorClient.getInfoByState(compra.getEndereco().getEstado());
+        System.out.println(Objects.requireNonNull(infoFornecedor).getEndereco());
     }
 }
