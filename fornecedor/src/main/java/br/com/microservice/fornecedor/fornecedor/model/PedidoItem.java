@@ -1,6 +1,8 @@
 package br.com.microservice.fornecedor.fornecedor.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Data
+@Builder
 @Entity
+@NoArgsConstructor
 public class PedidoItem {
 
     @Id
