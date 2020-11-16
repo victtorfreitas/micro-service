@@ -1,5 +1,6 @@
 package br.com.microservice.fornecedor.fornecedor.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToOne;
 @Builder
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 public class PedidoItem {
 
     @Id
