@@ -28,7 +28,7 @@ public class Pedido {
     @Enumerated(EnumType.STRING)
     private PedidoStatus status;
 
-    @OneToMany(cascade = CascadeType.ALL)k
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "pedidoId")
     private List<PedidoItem> itens;
 
