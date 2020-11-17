@@ -4,9 +4,11 @@ import br.com.microservice.loja.loja.config.FornecedorClient;
 import br.com.microservice.loja.loja.controller.requestDTO.CompraRequest;
 import br.com.microservice.loja.loja.controller.responseDTO.InfoPedidoResponse;
 import br.com.microservice.loja.loja.model.Compra;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
 @Service
+@Log
 public class CompraService {
 
     private final FornecedorClient fornecedorClient;
@@ -16,7 +18,9 @@ public class CompraService {
     }
 
     public Compra realizaCompra(CompraRequest compra) {
+        log.info("Realiza um pedido");
         InfoPedidoResponse pedidoResponse = fornecedorClient.realizaPedido(compra.getItens());
+        log.info("Monta retorno Compra");
         return montaCompra(compra, pedidoResponse);
     }
 
