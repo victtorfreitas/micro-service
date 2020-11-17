@@ -8,7 +8,7 @@ import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
 @Service
-@Log
+@Log(topic = "Compra")
 public class CompraService {
 
     private final FornecedorClient fornecedorClient;

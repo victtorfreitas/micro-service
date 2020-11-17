@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Log
+@Log(topic = "Pedido")
 public class PedidoService {
 
     private final PedidoRepository pedidoRepository;
