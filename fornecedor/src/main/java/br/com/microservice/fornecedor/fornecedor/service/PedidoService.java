@@ -6,13 +6,14 @@ import br.com.microservice.fornecedor.fornecedor.model.PedidoItem;
 import br.com.microservice.fornecedor.fornecedor.model.Produto;
 import br.com.microservice.fornecedor.fornecedor.repository.PedidoRepository;
 import br.com.microservice.fornecedor.fornecedor.repository.ProdutoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Log
 public class PedidoService {
 
     private final PedidoRepository pedidoRepository;
@@ -29,13 +30,16 @@ public class PedidoService {
     }
 
     public Pedido realizaPedido(List<ItemDoPedidoRequest> itens) {
+        log.info("Pedido recebido");
         if (itens == null) {
             return null;
         }
         List<PedidoItem> pedidoItens = toPedidoItem(itens);
         Pedido pedido = new Pedido(pedidoItens);
         pedido.setTempoDePreparo(itens.size());
-        return pedidoRepository.save(pedido);
+        Pedido pedidoBD = pedidoRepository.save(pedido);
+        log.info("Pedido Registrado");
+        return pedidoBD;
     }
 
     private List<PedidoItem> toPedidoItem(List<ItemDoPedidoRequest> itens) {
